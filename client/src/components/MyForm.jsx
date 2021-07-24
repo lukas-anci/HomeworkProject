@@ -8,57 +8,81 @@ class MyForm extends Component {
     time: '',
     shopType: '',
   };
+
+  handleSubmitLocal = (e) => {
+    e.preventDefault();
+    console.log('stop');
+  };
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
+    const { state: s } = this;
     return (
       <div className="w-50">
-        <form>
-          <div class="form-group">
+        <form onSubmit={this.handleSubmitLocal} autoComplete="off">
+          <div className="form-group">
             <input
+              value={s.name}
+              onChange={this.handleInput}
               type="text"
-              class="form-control"
+              className="form-control"
               name="name"
               placeholder="Name"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
+              value={s.price}
+              onChange={this.handleInput}
               type="number"
-              class="form-control"
+              className="form-control"
               name="price"
               placeholder="price"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
+              value={s.quantity}
+              onChange={this.handleInput}
               type="number"
-              class="form-control"
+              className="form-control"
               name="quantity"
               placeholder="quantity"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
+              value={s.description}
+              onChange={this.handleInput}
               type="text"
-              class="form-control"
+              className="form-control"
               name="description"
               placeholder="description"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
+              value={s.time}
+              onChange={this.handleInput}
               type="number"
-              class="form-control"
+              className="form-control"
               name="time"
               placeholder="time"
             />
           </div>
 
-          <select name="shopType" className="custom-select">
+          <select
+            value={s.shopType}
+            onChange={this.handleInput}
+            name="shopType"
+            className="custom-select"
+          >
             <option value="shop">Shop</option>
             <option value="service">Service</option>
           </select>
 
-          <button type="submit" class="btn btn-primary my-4">
+          <button type="submit" className="btn btn-primary my-4">
             Submit
           </button>
         </form>
