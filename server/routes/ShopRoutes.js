@@ -16,4 +16,15 @@ router.post('/api/shop/new', async (req, res) => {
   }
 });
 
+// get all items
+
+router.get('/api/shop', async (req, res) => {
+  try {
+    const allItems = await ShopModel.find({});
+    res.json(allItems);
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

@@ -10,6 +10,11 @@ class App extends Component {
       shop: [],
     };
   }
+
+  componentDidMount() {
+    this.getAllItems();
+  }
+
   createNewItem = async (data) => {
     console.log('data', data);
     try {
