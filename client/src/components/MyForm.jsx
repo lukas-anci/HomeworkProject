@@ -12,6 +12,10 @@ class MyForm extends Component {
   handleSubmitLocal = (e) => {
     e.preventDefault();
     console.log('stop');
+    const { name, price, quantity, description, time, shopType } = this.state;
+
+    const dataToCreate = { name, price, quantity, description, time, shopType };
+    this.props.onCreateItem(dataToCreate);
   };
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });

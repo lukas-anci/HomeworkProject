@@ -8,11 +8,14 @@ class App extends Component {
       shop: [],
     };
   }
+  createNewItem = (data) => {
+    console.log('data', data);
+  };
 
   render() {
     return (
       <div className="App container">
-        <MyForm />
+        <MyForm onCreateItem={this.createNewItem} />
       </div>
     );
   }
