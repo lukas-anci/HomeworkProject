@@ -6,16 +6,29 @@ class MyForm extends Component {
     quantity: '',
     description: '',
     time: '',
-    shopType: '',
+    shopType: 'shop',
   };
 
-  handleSubmitLocal = (e) => {
+  clearInputs = () => {
+    this.setState({
+      name: '',
+      price: '',
+      quantity: '',
+      description: '',
+      time: '',
+      shopType: '',
+    });
+  };
+
+  handleSubmitLocal = async (e) => {
     e.preventDefault();
     console.log('stop');
     const { name, price, quantity, description, time, shopType } = this.state;
 
     const dataToCreate = { name, price, quantity, description, time, shopType };
-    this.props.onCreateItem(dataToCreate);
+    const success = await this.props.onCreateItem(dataToCreate);
+
+    if (success) this.clearInputs();
   };
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });

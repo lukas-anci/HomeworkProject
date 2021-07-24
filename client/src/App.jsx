@@ -17,6 +17,7 @@ class App extends Component {
         data
       );
       console.log('createResult', createResult);
+      return createResult.data ? true : false;
     } catch (error) {
       console.error(error);
     }
