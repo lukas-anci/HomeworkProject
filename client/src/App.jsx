@@ -41,11 +41,24 @@ class App extends Component {
     }
   };
 
+  deleteItem = async (id) => {
+    console.log('you want to delete', id);
+    try {
+      const deleteItem = await axios.delete(
+        'http://localhost:4000/api/shop/delete' + id
+      );
+
+      deleteItem.data && this.getAllItems();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   render() {
     return (
       <div className="App container">
         <MyForm onCreateItem={this.createNewItem} />
-        <ShopList shop={this.state.shop} />
+        <ShopList onDelete={this.deleteItem} shop={this.state.shop} />
       </div>
     );
   }
