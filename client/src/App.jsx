@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import MyForm from './components/MyForm';
 import axios from 'axios';
+import ShopList from './components/ShopList';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,10 +24,22 @@ class App extends Component {
     }
   };
 
+  getAllItems = async () => {
+    try {
+      const allItems = await axios.get('http://localhost:4000/api/shop');
+      if (Array.isArray(allItems.data) && allItems.data.length) {
+        this.setState({ shop: allItems.data });
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
   render() {
     return (
       <div className="App container">
         <MyForm onCreateItem={this.createNewItem} />
+        <ShopList />
       </div>
     );
   }
