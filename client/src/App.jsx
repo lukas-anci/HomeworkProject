@@ -23,6 +23,7 @@ class App extends Component {
         data
       );
       console.log('createResult', createResult);
+      this.getAllItems();
       return createResult.data ? true : false;
     } catch (error) {
       console.error(error);
