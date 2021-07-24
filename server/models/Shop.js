@@ -24,6 +24,10 @@ const shopSchema = new Schema(
     time: {
       type: Number,
     },
+    shopType: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
