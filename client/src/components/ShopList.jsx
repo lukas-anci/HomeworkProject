@@ -3,7 +3,13 @@ import ShopItem from './ShopItem';
 class ShopList extends Component {
   state = {};
   render() {
-    return <ShopItem />;
+    return (
+      <div className="d-flex flex-wrap">
+        {this.props.shop.map((s) => (
+          <ShopItem shop={s} key={s._id} />
+        ))}
+      </div>
+    );
   }
 }
 

@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div className="App container">
         <MyForm onCreateItem={this.createNewItem} />
-        <ShopList />
+        <ShopList shop={this.state.shop} />
       </div>
     );
   }
