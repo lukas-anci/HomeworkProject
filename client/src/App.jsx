@@ -68,11 +68,22 @@ class App extends Component {
     }
   };
 
+  filterServicesOrShop = async (filterVal) => {
+    if (!filterVal) return this.getAllItems();
+    const filterServices = await axios.get(
+      'http://localhost:4000/api/shop/' + filterVal
+    );
+    if (Array.isArray(filterServices.data) && filterServices.data.length) {
+      this.setState({ shop: filterServices.data });
+    }
+  };
+
   render() {
     return (
       <div className="App container">
         <MyForm onCreateItem={this.createNewItem} />
         <ShopList
+          onFilter={this.filterServicesOrShop}
           onEdit={this.editItem}
           onDelete={this.deleteItem}
           shop={this.state.shop}
