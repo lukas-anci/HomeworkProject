@@ -8,7 +8,8 @@ class ShopItem extends Component {
     };
   }
 
-  handleEdit = () => {
+  handleEdit = (editData) => {
+    this.state.isEditOn && this.props.onEdit(this.props.shop._id, editData);
     this.setState({ isEditOn: !this.state.isEditOn });
   };
   render() {

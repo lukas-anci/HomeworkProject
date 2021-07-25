@@ -56,6 +56,16 @@ class App extends Component {
 
   editItem = async (id, editDetails) => {
     console.log('update place', id, editDetails);
+
+    try {
+      const updateResult = await axios.put(
+        'http://localhost:4000/api/shop/edit/' + id,
+        editDetails
+      );
+      if (updateResult.data) this.getAllItems();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   render() {

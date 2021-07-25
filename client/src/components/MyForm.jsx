@@ -35,11 +35,13 @@ class MyForm extends Component {
     console.log('stop');
     const { name, price, quantity, description, time, shopType } = this.state;
 
-    const dataToCreate = { name, price, quantity, description, time, shopType };
+    const data = { name, price, quantity, description, time, shopType };
+    if (this.props.shop) {
+      this.props.onEdit(data);
+      return;
+    }
 
-    this.props.place && this.props.onEdit(dataToCreate);
-
-    const success = await this.props.onCreateItem(dataToCreate);
+    const success = await this.props.onCreateItem(data);
 
     if (success) this.clearInputs();
   };
