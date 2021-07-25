@@ -27,4 +27,15 @@ router.get('/api/shop', async (req, res) => {
   }
 });
 
+// delete Item
+
+router.delete('/api/shop/delete/:id', async (req, res) => {
+  try {
+    const deleteItem = await ShopModel.findByIdAndDelete(req.params.id);
+    res.json(deleteItem);
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

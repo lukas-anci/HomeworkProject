@@ -45,7 +45,7 @@ class App extends Component {
     console.log('you want to delete', id);
     try {
       const deleteItem = await axios.delete(
-        'http://localhost:4000/api/shop/delete' + id
+        'http://localhost:4000/api/shop/delete/' + id
       );
 
       deleteItem.data && this.getAllItems();
