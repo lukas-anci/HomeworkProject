@@ -52,4 +52,16 @@ router.put('/api/shop/edit/:id', async (req, res) => {
   }
 });
 
+// filter shop
+
+router.get('/api/shop/:filterId', async (req, res) => {
+  const filterBy = req.params.filterId;
+  try {
+    const allItems = await ShopModel.find({ shopType: filterBy });
+    res.json(allItems);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
