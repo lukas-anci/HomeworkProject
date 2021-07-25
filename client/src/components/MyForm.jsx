@@ -6,8 +6,18 @@ class MyForm extends Component {
     quantity: '',
     description: '',
     time: '',
-    shopType: 'shop',
+    shopType: '',
   };
+
+  componentDidMount() {
+    this.props.shop && this.propsToState();
+  }
+
+  propsToState() {
+    const { name, price, quantity, description, time, shopType } =
+      this.props.shop;
+    this.setState({ name, price, quantity, description, time, shopType });
+  }
 
   clearInputs = () => {
     this.setState({
@@ -26,6 +36,9 @@ class MyForm extends Component {
     const { name, price, quantity, description, time, shopType } = this.state;
 
     const dataToCreate = { name, price, quantity, description, time, shopType };
+
+    this.props.place && this.props.onEdit(dataToCreate);
+
     const success = await this.props.onCreateItem(dataToCreate);
 
     if (success) this.clearInputs();
@@ -36,7 +49,7 @@ class MyForm extends Component {
   render() {
     const { state: s } = this;
     return (
-      <div className="w-50">
+      <div className={this.props.shop ? 'card-body ' : 'w-50'}>
         <form onSubmit={this.handleSubmitLocal} autoComplete="off">
           <div className="form-group">
             <input
@@ -100,7 +113,7 @@ class MyForm extends Component {
           </select>
 
           <button type="submit" className="btn btn-primary my-4">
-            Submit
+            {this.props.shop ? 'Save' : 'Submit'}
           </button>
         </form>
       </div>

@@ -16,7 +16,7 @@ class ShopItem extends Component {
     return (
       <div className="card m-2">
         {this.state.isEditOn ? (
-          <MyForm />
+          <MyForm shop={s} onEdit={this.handleEdit} />
         ) : (
           <React.Fragment>
             <div className="card-header">Shop type: {s.shopType}</div>
