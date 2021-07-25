@@ -6,7 +6,12 @@ class ShopList extends Component {
     return (
       <div className="d-flex flex-wrap">
         {this.props.shop.map((s) => (
-          <ShopItem onDelete={this.props.onDelete} shop={s} key={s._id} />
+          <ShopItem
+            onEdit={this.props.onEdit}
+            onDelete={this.props.onDelete}
+            shop={s}
+            key={s._id}
+          />
         ))}
       </div>
     );

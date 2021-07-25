@@ -62,7 +62,11 @@ class App extends Component {
     return (
       <div className="App container">
         <MyForm onCreateItem={this.createNewItem} />
-        <ShopList onDelete={this.deleteItem} shop={this.state.shop} />
+        <ShopList
+          onEdit={this.editItem}
+          onDelete={this.deleteItem}
+          shop={this.state.shop}
+        />
       </div>
     );
   }
