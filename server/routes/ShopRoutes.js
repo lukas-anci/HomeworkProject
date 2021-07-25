@@ -38,4 +38,18 @@ router.delete('/api/shop/delete/:id', async (req, res) => {
   }
 });
 
+// edit item
+
+router.put('/api/shop/edit/:id', async (req, res) => {
+  try {
+    const whatToEdit = await ShopModel.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+    res.json(whatToEdit);
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

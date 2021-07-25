@@ -54,6 +54,10 @@ class App extends Component {
     }
   };
 
+  editItem = async (id, editDetails) => {
+    console.log('update place', id, editDetails);
+  };
+
   render() {
     return (
       <div className="App container">
